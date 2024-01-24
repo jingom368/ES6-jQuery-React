@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <title>Document</title>
+        <script>
+            $(function () {
+                $('#btn').click(function () {
+                    console.log({ id: 'hong' })
+                    console.log(JSON.stringify({ id: 'hong' }))
+                    var param = {
+                        user: {
+                            name: $('#name').val(),
+                            nickname: $('#nickname').val(),
+                        },
+                        board: {
+                            title: $('#title').val(),
+                            content: $('#content').val(),
+                        },
+                    }
+                    $.ajax({
+                        url: 'http://localhost:8080/api/send2',
+                        method: 'post',
+                        data: { id: 'hong' }, // 자바스크립트 객체 형태와 json 형태는 다르다. requestbody할 때는 바꿔줘야 함
+                        // data: param,
+                        contentType: 'application/json charset=utf-8',
+                        success: function () {
+                            console.log('성공')
+                        },
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <h1>회원 정보</h1>
+        이름 : <input type="text" name="name" id="name" /><br />
+        별명 : <input type="text" name="nickname" id="nickname" /><br />
+        <h1>게시판</h1>
+        제목 : <input type="text" name="title" id="title" /><br />
+        내용 : <input type="text" name="content" id="content" /><br />
+        <hr />
+        <button id="btn">전송</button>
+    </body>
+</html>

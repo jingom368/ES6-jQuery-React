@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <title>Document</title>
+        <script>
+            $(function () {
+                $.ajax({
+                    url: 'http://localhost:8080/api/customer/all',
+                    method: 'get',
+                    success: function (res) {
+                        // console.log(res)
+                        // $.each(res, function (i, e) {
+                        //     console.log('i, e : ', i, e)
+                        // })
+                        // res.forEach(function (e, i) {
+                        //     console.log(e, i)
+                        // })
+                        for (let i = 0; i < res.length; i++) {
+                            console.log(i, res[i])
+                        }
+                        var table = "<table border='1'>"
+                        table += '<tr>'
+                        table += '<td>아이디</td>'
+                        table += '<td>이름</td>'
+                        table += '<td>전화번호</td>'
+                        table += '<td>이메일</td>'
+                        table += '</tr>'
+                        for (let i = 0; i < res.length; i++) {
+                            table += '<tr>'
+                            table += '<td>' + res[i].CUSTOMER_ID + '</td>'
+                            table += '<td>' + res[i].CUSTOMER_NAME + '</td>'
+                            table += '<td>' + res[i].PHONE_NUMBER + '</td>'
+                            table += '<td>' + res[i].EMAIL + '</td>'
+                            table += '</tr>'
+                        }
+                        table += '</table>'
+                        $('body').html(table)
+                    },
+                })
+            })
+        </script>
+    </head>
+    <body></body>
+</html>

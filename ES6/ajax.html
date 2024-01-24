@@ -1,0 +1,42 @@
+<script>
+    function ajax(url) {
+        console.log(url + "호출");
+        var result = '빈값';
+        setTimeout(() => {
+            console.log('콜백함수 실행1');
+            result = '응답결과';
+        }, 2000);
+        return result;
+    }
+    console.log('시작');
+    console.log(ajax('www.naver.com'));
+    console.log('끝');
+
+    function test(callback) {
+        return new Promise(function(resolve, reject) { // 응답이 올 때까지 기다려야 함. 그렇기에 API 요청이 들어오면 응답이 올 때 화면애 뿌려짐
+            setTimeout(() => {
+                // console.log('콜백함수 실행2');
+                resolve('응답결과');
+            }, 2000);
+        });
+    }
+    console.log('시작');
+    test().then(function(data) {
+        console.log('resolve의 매개 변수 : ' + data);
+    })
+    console.log('끝');
+
+    function call1() {
+        // var result = '';
+        var promise = test(data=>data)
+        console.log('promise1 : ', promise); 
+    }
+    call1();
+
+    async function call2() { // 비동기적인 걸 동기적으로..
+        // var result = '';
+        var promise = await test(data=>data)
+        console.log('promise2 : ', promise); 
+    }
+    call2();
+</script>

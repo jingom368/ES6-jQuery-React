@@ -1,0 +1,53 @@
+<script>
+    // hello();
+    function hello() {
+        return "안녕?";
+    }
+
+    function hello() {
+        return "안녕!";
+    }
+
+    function greet(name) {
+        function hello() {
+            return name + "님 안녕하세요1";
+        }
+        console.log(hello());
+    }
+    console.log(hello());
+    greet('홍길동')
+
+    function greet(name) {
+        function hello() {
+            return name + "님 안녕하세요2";
+        }
+        return hello;
+    }
+    var r = greet('홍길동')
+    // console.log(r());
+
+    function greet(name) {
+        return () => {
+            return name + "님 안녕하세요3";
+        }
+    }
+    var r = greet('홍길동')
+    // console.log(r());
+
+    function greet4(name) {
+        var age = 30;
+        console.log(age);
+        return (type) => {
+            return name + "님 안녕하세요" + type;
+        }
+    }
+    var r = greet4('홍길동')
+    var r2 = greet4('김길동')
+    console.log(r('?')); // name을 사용? (클로저, closure)
+    console.log(r2('?')); 
+
+    /* r = (type) => {
+        return name + "님 안녕하세요" + type;
+    } */
+    // console.log(name);
+</script> 

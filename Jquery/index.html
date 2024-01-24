@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <script>
+        // h1 태그의 텍스트를 빨강으로 변경
+        // 선택자로 객체 생성 후 메서드 실행
+        // dom + image + 동영상 로드 후
+        window.onload = function () {
+            // $('h1').css('color', 'red')
+            console.log(1)
+        }
+
+        // dom 로드 후
+        $(document).ready(function () {
+            // $('h1').css('color', 'yellow')
+            console.log(2)
+        })
+
+        //
+        $(function () {
+            $('h1.depth3').css('color', 'blue')
+            $('h1').each((i, e) => {
+                console.log('i, e.innerHTML : ', i, e.innerHTML)
+            })
+            console.log(3)
+        })
+
+        function check() {
+            var id = $('#id').val()
+            console.log('id : ', id)
+        }
+    </script>
+    <style>
+        div {
+            border: 1px solid #00f;
+            margin: 2px;
+        }
+    </style>
+    <body>
+        <div>
+            <h1>Depth1</h1>
+            <div id="depth1">
+                <h1>Depth2</h1>
+                <div>
+                    <h1 class="depth3">Depth3</h1>
+                </div>
+            </div>
+        </div>
+        <h2 class="depth3">바깥 Depth1</h2>
+        <input type="text" id="id" /><br />
+        <button onclick="check()">로그인</button>
+    </body>
+</html>

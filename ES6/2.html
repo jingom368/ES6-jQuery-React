@@ -1,0 +1,33 @@
+<script>
+    var arr1 = ['a','b','c']
+    var arr2 = arr1 // 새로운 변수 대입
+    arr2[0] = 'd';
+    console.log(arr1);
+    console.log(arr1 == arr2); // true
+
+    var arr3 = [...arr1]; // 새로운 객체
+    console.log(arr1 == arr3); // false
+
+    // var aaa = undefined --> var를 쓰지 말아야 하는 이유
+    // aaa();
+    var aaa = function() { // 변수도 함수 // var 변수는 호이스팅 안댐 --> aaa라는 변수에 익명함수가 들어가 있는 형태
+        console.log(111);
+    };
+    console.log(typeof(aaa)) 
+
+    bbb();
+    
+    function bbb() { // 함수는 hoisting --> 함수를 실행
+        console.log(111);
+    }
+    console.log(typeof(bbb))
+    console.log(aaa);
+    console.log(bbb);
+
+    var ccc = () => {
+        console.log('ccc');
+    }
+    console.log(ccc);
+    
+
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <title>Document</title>
+        <script>
+            function goSave() {
+                var con = true
+
+                if ($('#email').val().trim() == '') {
+                    alert('이메일을 입력하세요')
+                    $('#email').focus()
+                    return // 유효성 검사 하고서 커서 넣어주고 기다림. // 더 이상 가는 것을 중지하기 위해서.
+                    // return false : form 태그 때문에
+                }
+
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts',
+                    data: {
+                        email: $('#email').val(),
+                    },
+                    // async: false - 응답을 기다림
+                    // async: true - 비동기 : 응답을 기다리지 않음 / 비밀번호를 입력하세요 => 중복입니다.
+                    success: function (res) {
+                        // 만약 중복이라면
+                        alert('중복입니다') // 왜 중지가 안될까? 중지를 하려면 어떻게 해야할 것인가? // function 함수를 끝내는 것..!!!
+                        con = false // continue 변수를 하나 만들어서 계속 할건지 말건지를 체크하는 것.
+                        return
+                    },
+                })
+
+                // 계속 할건지 말건지
+                if (!con) return
+
+                if ($('#pw').val().trim() == '') {
+                    alert('비밀번호를 입력하세요')
+                    $('#pw').focus()
+                }
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

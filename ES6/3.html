@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="button" class="btn" value="버튼" />
+    <input type="button" id="btn2" value="버튼" />
+    <script>
+      //document.getElementById('btn').onclick = function() {
+      document.querySelector(".btn").onclick = function () {
+        console.log(this);
+        alert("버튼");
+      };
+      document.querySelector(".btn").onclick = function () {
+        console.log(this);
+        alert("새로운 버튼");
+      };
+      document.querySelector("#btn2").addEventListener("click", function () {
+        alert("클릭");
+      });
+      document.querySelector("#btn2").addEventListener("click", function () {
+        alert("클릭2");
+      });
+
+      // callback (call: 실행/호출 + back: 뒤)
+      // -> 함수를 매개변수로 전달
+      // function plus(x,y) {
+      //    return x+y;
+      // }
+      // function minus(x,y) {
+      //     return x-y;
+      // }
+      function cal(x, y, func) {
+        var r = func(x, y);
+        console.log(r);
+      }
+
+      // 익명 함수
+      cal(1, 2, function (x, y) {
+        return x + y;
+      });
+      cal(1, 2, function (x, y) {
+        return x - y;
+      });
+
+      // 화살표 함수
+      cal(1, 2, (x, y) => x + y);
+      cal(1, 2, (x, y) => x - y);
+
+      // JIT (Just In Time)
+    </script>
+  </body>
+</html>
